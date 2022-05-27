@@ -1,11 +1,12 @@
 import "./App.css";
 import Header from "./Header/Header";
+import { Fragment } from "react";
 
 function App() {
   return (
-    <div className="App">
+    <Fragment>
       <Header />
-    </div>
+    </Fragment>
   );
 }
 
