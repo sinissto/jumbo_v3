@@ -25,7 +25,7 @@
 .header_left {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  /*gap: 1.5rem;*/
 }
 
 .header_right {
@@ -34,7 +34,7 @@
 }
 
 .icon {
-  padding: 1.5rem;
+  padding: 1.2rem;
   font-size: 2.4rem;
   color: white;
 }
@@ -43,25 +43,78 @@
   color: rgb(139, 149, 205);
 }
 
-button {
-  padding: 15px;
+.btn {
+  padding: 1.5rem;
   background-color: transparent;
   border: none;
-  width: 48px;
-  height: 48px;
-  display: inline-block;
+  width: 4.8rem;
+  height: 4.8rem;
+  cursor: pointer;
+  position: relative;
+  /*display: inline-block;*/
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-button:hover {
+.btn_menu {
+  display: none;
+}
+
+/*button {*/
+/*  padding: 15px;*/
+/*  background-color: transparent;*/
+/*  border: none;*/
+/*  width: 48px;*/
+/*  height: 48px;*/
+/*  !*display: inline-block;*!*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-around;*/
+/*}*/
+
+.btn:hover {
   background-color: rgb(46, 66, 173);
   border-radius: 50%;
 }
 
-button:hover .icon_hov {
+.btn:hover .icon_hov {
   color: white;
+}
+
+/*.lupa {*/
+/*  margin-right: 1rem;*/
+/*  padding: 1rem;*/
+/*  font-size: 2.4rem;*/
+/*  color: white;*/
+/*}*/
+
+.btn.lupa:hover {
+  background: none;
+}
+
+.apps {
+  margin-left: 1rem;
+}
+
+.notification {
+  margin-right: 1rem;
+}
+
+.notification::after {
+  content: "5";
+  font-size: 1.4rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+  display: block;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  background-color: rgb(254, 141, 28);
+  padding: 0.2rem;
+  border: 1px solid white;
+  border-radius: 50%;
 }
 
 .input_field {
@@ -73,13 +126,6 @@ button:hover .icon_hov {
   width: 35rem;
   color: white;
   font-size: 1.6rem;
-}
-
-.lupa {
-  margin-right: 1rem;
-  padding: 1rem;
-  font-size: 2.4rem;
-  color: white;
 }
 
 input {
@@ -113,6 +159,11 @@ input:focus {
   padding: 0;
   display: flex;
   align-items: center;
+  justify-content: space-around;
+}
+
+.btn.flag_btn:hover {
+  background-color: transparent;
 }
 
 .flag {
@@ -123,4 +174,11 @@ input:focus {
   height: 5rem;
   overflow: hidden;
   border-radius: 50%;
+}
+
+@media (max-width: 900px) {
+  .btn_menu {
+    display: flex;
+    margin-right: 1rem;
+  }
 }
