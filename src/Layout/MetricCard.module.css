@@ -1,0 +1,11 @@
+.metric_card {
+  border: 1px solid grey;
+  border-radius: 5px;
+
+  background-color: white;
+
+  box-shadow: 0 0 2px 2px #e5e5e5;
+}
+
+@media (max-width: 900px) {
+}

@@ -10,6 +10,12 @@
   justify-content: space-between;
 }
 
-.metric_container--cols {
+.metric_container_cols {
   grid-template-columns: 1fr 1fr 2fr;
+}
+
+@media (max-width: 900px) {
+  .metric_container_cols {
+    grid-template-columns: 1fr 1fr;
+  }
 }
