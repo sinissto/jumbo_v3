@@ -1,0 +1,15 @@
+.metric_container {
+  background-color: yellow;
+  width: 96%;
+  margin: 1rem auto;
+  padding: 0;
+
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric_container--cols {
+  grid-template-columns: 1fr 1fr 2fr;
+}
