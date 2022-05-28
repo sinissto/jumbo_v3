@@ -8,7 +8,10 @@ const Header = () => {
       <div className={classes.header_container}>
         <div className={classes.header_left}>
           <div>
-            <button type="button">
+            <button
+              className={`${classes.btn} ${classes.btn_menu}`}
+              type="button"
+            >
               <span className={`material-icons ${classes.icon}`}> menu </span>
             </button>
           </div>
@@ -22,7 +25,7 @@ const Header = () => {
 
         <div className={classes.header_right}>
           <div className={classes.input_field}>
-            <button>
+            <button className={`${classes.btn} ${classes.lupa}`} type="button">
               <span className={`material-icons ${classes.icon}`}> search </span>
             </button>
 
@@ -30,7 +33,7 @@ const Header = () => {
           </div>
 
           <div>
-            <button>
+            <button className={`${classes.btn} ${classes.apps}`} type="button">
               <span
                 className={`material-icons ${classes.icon} ${classes.icon_hov}`}
               >
@@ -41,7 +44,7 @@ const Header = () => {
           </div>
 
           <div>
-            <button>
+            <button className={`${classes.btn} `} type="button">
               <span
                 className={`material-icons ${classes.icon} ${classes.icon_hov}`}
               >
@@ -52,7 +55,10 @@ const Header = () => {
           </div>
 
           <div>
-            <button>
+            <button
+              className={`${classes.btn} ${classes.notification}`}
+              type="button"
+            >
               <span
                 className={`material-icons ${classes.icon} ${classes.icon_hov}`}
               >
@@ -63,7 +69,10 @@ const Header = () => {
           </div>
 
           <div className={classes.flag_div}>
-            <button className={classes.flag_btn} type="button">
+            <button
+              className={`${classes.btn} ${classes.flag_btn}`}
+              type="button"
+            >
               <span className={classes.flag}>
                 <img src={flag} alt="" />
               </span>
