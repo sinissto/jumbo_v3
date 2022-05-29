@@ -2,7 +2,6 @@ import classes from "./TimeFrameChip.module.css";
 import { useState } from "react";
 
 const TimeFrameChip = (props) => {
-  console.log(props);
   let bckColor, textColor, description;
   const [mouseOver, setMouseOver] = useState(false);
 
