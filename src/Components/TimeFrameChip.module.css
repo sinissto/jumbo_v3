@@ -1,0 +1,8 @@
+.time_frame_chip {
+  display: inline-block;
+
+  font-size: 1.4rem;
+
+  padding: 5px 15px;
+  border-radius: 20px;
+}

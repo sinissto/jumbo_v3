@@ -1,0 +1,8 @@
+.card_title {
+  display: flex;
+}
+
+.card_title h3 {
+  font-size: 1.8rem;
+  align-self: center;
+}
