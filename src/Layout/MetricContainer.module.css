@@ -1,5 +1,5 @@
 .metric_container {
-  background-color: yellow;
+  /*background-color: yellow;*/
   width: 96%;
   margin: 1rem auto;
   padding: 0;
@@ -17,5 +17,11 @@
 @media (max-width: 900px) {
   .metric_container_cols {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .metric_container_cols {
+    grid-template-columns: 1fr;
   }
 }

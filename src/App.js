@@ -2,9 +2,10 @@ import "./App.css";
 import Header from "./Header/Header";
 import { Fragment } from "react";
 import MetricContainer from "./Layout/MetricContainer";
-import MetricCard from "./Layout/MetricCard";
+
 import Views from "./Views/Views";
 import Orders from "./Orders/Odrers";
+import Visited from "./Visited/Visited";
 
 const APP_DATA = {
   views: {
@@ -79,9 +80,7 @@ function App() {
       <MetricContainer>
         <Views data={APP_DATA.views} />
         <Orders data={APP_DATA.orders} />
-        <MetricCard>
-          <h1>Card 3</h1>
-        </MetricCard>
+        <Visited data={APP_DATA.visited} />
       </MetricContainer>
     </Fragment>
   );

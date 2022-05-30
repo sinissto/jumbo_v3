@@ -1,0 +1,22 @@
+.visited_container {
+  border: 1px solid grey;
+  border-radius: 5px;
+
+  background-color: white;
+
+  box-shadow: 0 0 2px 2px #e5e5e5;
+}
+
+.card_body_visited {
+  display: flex;
+  align-content: center;
+
+  gap: 6rem;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .visited_container {
+    grid-column: 1 / -1;
+  }
+}
