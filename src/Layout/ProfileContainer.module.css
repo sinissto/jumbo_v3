@@ -1,0 +1,26 @@
+.profile_container {
+  width: 96%;
+  margin: 1rem auto;
+  padding: 0;
+
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile_container_cols {
+  grid-template-columns: 1fr 1fr;
+}
+
+/*@media (max-width: 900px) {*/
+/*  .profile_container_cols {*/
+/*    grid-template-columns: 1fr 1fr;*/
+/*  }*/
+/*}*/
+
+@media (max-width: 500px) {
+  .profile_container_cols {
+    grid-template-columns: 1fr;
+  }
+}

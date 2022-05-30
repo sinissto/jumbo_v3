@@ -6,6 +6,8 @@ import MetricContainer from "./Layout/MetricContainer";
 import Views from "./Views/Views";
 import Orders from "./Orders/Odrers";
 import Visited from "./Visited/Visited";
+import Profile from "./Profile/Profile";
+import ProfileContainer from "./Layout/ProfileContainer";
 
 const APP_DATA = {
   views: {
@@ -82,6 +84,10 @@ function App() {
         <Orders data={APP_DATA.orders} />
         <Visited data={APP_DATA.visited} />
       </MetricContainer>
+
+      <ProfileContainer>
+        <Profile />
+      </ProfileContainer>
     </Fragment>
   );
 }

@@ -1,6 +1,6 @@
 import classes from "../Views/Views.module.css";
 import visitedClasses from "./Visited.module.css";
-import MetricCard from "../Layout/MetricCard";
+
 import CardTitle from "../Components/CardTitile";
 import TimeFrameChip from "../Components/TimeFrameChip";
 import Number from "../Components/Number";
