@@ -1,0 +1,138 @@
+.list_item {
+  display: flex;
+  align-items: center;
+
+  padding: 0.8rem 2.5rem;
+  border-bottom: 1px solid rgb(238, 238, 238);
+
+  transition: all 3s;
+}
+
+.list_item:hover {
+  background-color: #f6f6f6;
+  transform: translateY(-0.2rem);
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.list_img {
+  width: 5.2rem;
+  border-radius: 50%;
+}
+
+.list_description {
+  width: 100%;
+  padding: 0 0 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list_name_nick {
+}
+
+.name {
+  color: rgb(30, 30, 30);
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.nick {
+  color: rgb(151, 151, 151);
+  font-size: 1.2rem;
+}
+
+.date_btn {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+}
+
+.date_request {
+  color: rgb(153, 153, 153);
+  font-size: 1.2rem;
+  padding-right: 0.5rem;
+}
+
+/*.accept_reject_btns {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  gap: 1rem;*/
+/*}*/
+
+.accept_reject_btns {
+  /*overflow: hidden;*/
+  /*width: 0;*/
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  /*transform: translateX(150%);*/
+
+  transition: all 3s;
+}
+
+.accept_reject_btns {
+  /*width: 150px;*/
+  /*transform: translateX(-50%);*/
+}
+
+/*.list_item:hover .accept_reject_btns {*/
+/*  transform: translateX(0);*/
+/*}*/
+
+.active {
+  display: none;
+}
+
+.accept_btn,
+.reject_btn {
+  width: auto;
+  height: 3rem;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+}
+
+.accept_btn {
+  background-color: rgb(44, 52, 146);
+  color: rgb(237, 237, 245);
+}
+
+/*.accept_btn:hover,*/
+/*.reject_btn:hover {*/
+/*  transform: translateX(0);*/
+/*}*/
+
+.accept_btn:hover {
+  border-radius: 0.5rem;
+}
+
+.reject_btn {
+  color: rgb(44, 52, 146);
+}
+
+.reject_btn:hover {
+  border-radius: 0.5rem;
+  background-color: rgb(230, 232, 244);
+}
+
+.list_btn {
+  color: rgb(106, 106, 106);
+  background-color: transparent;
+  border: none;
+  padding: 1.2rem;
+  margin-left: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.list_btn:hover {
+  background-color: rgb(243, 243, 243);
+}
+
+.list_btn:active {
+  background-color: rgb(171, 171, 171);
+}
