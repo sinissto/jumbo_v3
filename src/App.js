@@ -8,6 +8,7 @@ import Orders from "./Orders/Odrers";
 import Visited from "./Visited/Visited";
 import Profile from "./Profile/Profile";
 import ProfileContainer from "./Layout/ProfileContainer";
+import NewRequests from "./NewRequests/NewRequests";
 
 const APP_DATA = {
   views: {
@@ -87,6 +88,7 @@ function App() {
 
       <ProfileContainer>
         <Profile />
+        <NewRequests />
       </ProfileContainer>
     </Fragment>
   );
