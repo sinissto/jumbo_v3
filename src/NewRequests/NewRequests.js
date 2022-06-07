@@ -2,11 +2,12 @@ import classes from "./NewRequests.module.css";
 
 import NewRequestItem from "./NewRequestItem";
 import MetricCard from "../Layout/MetricCard";
+import { useCallback, useEffect, useState } from "react";
 
 const importImages = (r) => {
   let images = {};
   r.keys().map((item) => {
-    images[item.replace("./", "")] = r(item);
+    return (images[item.replace("./", "")] = r(item));
   });
   return images;
 };
@@ -57,6 +58,35 @@ const newRequestersData = [
 
 const NewRequests = () => {
   // console.log(newRequestersData)
+
+  const [requesters, setRequesters] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const newRequestersURL =
+    "https://629e69668b939d3dc281706e.mockapi.io/requesters";
+
+  const fetchNewRequesters = useCallback(async () => {
+    setIsLoading(true);
+    const response = await fetch(newRequestersURL);
+    const data = await response.json();
+    const transformedData = data.map((requesterData) => {
+      return {
+        id: requesterData.id,
+        name: requesterData.name,
+        image: requesterData.avatar,
+        nick: "@" + requesterData.nick,
+        requestDate: requesterData.createdAt,
+      };
+    });
+    setRequesters(transformedData);
+  }, []);
+
+  console.log(requesters);
+
+  useEffect(() => {
+    fetchNewRequesters();
+  }, [fetchNewRequesters]);
+
   return (
     <MetricCard>
       {/*<div className={classes.requests}>*/}
@@ -74,7 +104,8 @@ const NewRequests = () => {
       {/*Requesters on hold*/}
       <div className={classes.requests_list}>
         <ul className={classes.requests_ulist}>
-          {newRequestersData.map((request) => (
+          {/*{newRequestersData.map((request) => (*/}
+          {requesters.map((request) => (
             <NewRequestItem
               key={request.id}
               image={request.image}
