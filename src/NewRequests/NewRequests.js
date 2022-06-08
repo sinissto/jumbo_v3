@@ -85,6 +85,7 @@ const NewRequests = () => {
       };
     });
     setRequesters(transformedData);
+    setIsLoading(false);
   }, []);
 
   console.log(requesters);
@@ -111,15 +112,17 @@ const NewRequests = () => {
       <div className={classes.requests_list}>
         <ul className={classes.requests_ulist}>
           {/*{newRequestersData.map((request) => (*/}
-          {requesters.map((request) => (
-            <NewRequestItem
-              key={request.id}
-              image={request.image}
-              name={request.name}
-              nick={request.nick}
-              requestDate={request.requestDate}
-            />
-          ))}
+          {isLoading && <strong>LOADING...</strong>}
+          {!isLoading &&
+            requesters.map((request) => (
+              <NewRequestItem
+                key={request.id}
+                image={request.image}
+                name={request.name}
+                nick={request.nick}
+                requestDate={request.requestDate}
+              />
+            ))}
         </ul>
       </div>
       {/*</div>*/}
