@@ -64,7 +64,7 @@ const NewRequests = () => {
   const [error, setError] = useState(null);
 
   const newRequestersURL =
-    "https://629e69668b939d3dc281706e.mockapi.io/requester";
+    "https://629e69668b939d3dc281706e.mockapi.io/requesters";
 
   const fetchNewRequesters = useCallback(async () => {
     setIsLoading(true);
@@ -76,7 +76,7 @@ const NewRequests = () => {
       if (response.ok === false) {
         throw new Error("Nesto si sjebao!!!");
       }
-      console.log(response);
+      // console.log(response);
       const data = await response.json();
 
       const transformedData = data.map((requesterData) => {
@@ -101,6 +101,8 @@ const NewRequests = () => {
       setIsLoading(false);
       console.log(err.message);
     }
+
+    setIsLoading(false);
   }, []);
 
   console.log(requesters);
