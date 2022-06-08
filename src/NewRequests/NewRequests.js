@@ -56,7 +56,6 @@ const newRequestersData = [
 ];
 
 const NewRequests = () => {
-  // console.log(newRequestersData)
   return (
     <MetricCard>
       {/*<div className={classes.requests}>*/}
