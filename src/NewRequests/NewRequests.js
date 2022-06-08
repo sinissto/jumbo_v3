@@ -2,60 +2,115 @@ import classes from "./NewRequests.module.css";
 
 import NewRequestItem from "./NewRequestItem";
 import MetricCard from "../Layout/MetricCard";
+import { useCallback, useEffect, useState } from "react";
 
-const importImages = (r) => {
-  let images = {};
-  r.keys().map((item) => {
-    images[item.replace("./", "")] = r(item);
-  });
-  return images;
-};
-const images = importImages(
-  require.context("../img/newRequestsImgs", false, /\.(png|jpe?g|svg)$/)
-  // require.context('./images', false, /\.(png|jpe?g|svg)$/)
-);
+// const importImages = (r) => {
+//   let images = {};
+//   r.keys().map((item) => {
+//     return (images[item.replace("./", "")] = r(item));
+//   });
+//   return images;
+// };
+// const images = importImages(
+//   require.context("../img/newRequestsImgs", false, /\.(png|jpe?g|svg)$/)
+//   // require.context('./images', false, /\.(png|jpe?g|svg)$/)
+// );
 
 // console.log(images['julia-robert.jpeg'])
 
-const newRequestersData = [
-  {
-    id: Math.random().toString(),
-    image: images["julia-robert.jpeg"],
-    name: "Julia Robert",
-    nick: "@julia.robert",
-    requestDate: "Today",
-  },
-  {
-    id: Math.random().toString(),
-    image: images["joe-lee.jpeg"],
-    name: "Joe lee",
-    nick: "@joe.lee",
-    requestDate: "Yesterday",
-  },
-  {
-    id: Math.random().toString(),
-    image: images["chang-lee.jpeg"],
-    name: "Chang Lee",
-    nick: "@chang.lee",
-    requestDate: "March 06, 2022",
-  },
-  {
-    id: Math.random().toString(),
-    image: images["mickey-artur.jpeg"],
-    name: "Mickey Artur",
-    nick: "@mickey.artur",
-    requestDate: "February 17, 2022",
-  },
-  {
-    id: Math.random().toString(),
-    image: images["shane-watson.jpeg"],
-    name: "Shane Watson",
-    nick: "@shane.watson",
-    requestDate: "February 14, 2022",
-  },
-];
+// const newRequestersData = [
+//   {
+//     id: Math.random().toString(),
+//     image: images["julia-robert.jpeg"],
+//     name: "Julia Robert",
+//     nick: "@julia.robert",
+//     requestDate: "Today",
+//   },
+//   {
+//     id: Math.random().toString(),
+//     image: images["joe-lee.jpeg"],
+//     name: "Joe lee",
+//     nick: "@joe.lee",
+//     requestDate: "Yesterday",
+//   },
+//   {
+//     id: Math.random().toString(),
+//     image: images["chang-lee.jpeg"],
+//     name: "Chang Lee",
+//     nick: "@chang.lee",
+//     requestDate: "March 06, 2022",
+//   },
+//   {
+//     id: Math.random().toString(),
+//     image: images["mickey-artur.jpeg"],
+//     name: "Mickey Artur",
+//     nick: "@mickey.artur",
+//     requestDate: "February 17, 2022",
+//   },
+//   {
+//     id: Math.random().toString(),
+//     image: images["shane-watson.jpeg"],
+//     name: "Shane Watson",
+//     nick: "@shane.watson",
+//     requestDate: "February 14, 2022",
+//   },
+// ];
 
 const NewRequests = () => {
+  // console.log(newRequestersData)
+
+  const [requesters, setRequesters] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const newRequestersURL =
+    "https://629e69668b939d3dc281706e.mockapi.io/requesters";
+
+  const fetchNewRequesters = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(newRequestersURL);
+
+      if (response.ok === false) {
+        throw new Error("Nesto si sjebao!!!");
+      }
+      // console.log(response);
+      const data = await response.json();
+
+      const transformedData = data.map((requesterData) => {
+        // Date formating
+        const dateOfRequest = new Date(requesterData.createdAt);
+        const year = dateOfRequest.getFullYear();
+        const month = dateOfRequest.getMonth();
+        const day = dateOfRequest.getDay();
+
+        return {
+          id: requesterData.id,
+          name: requesterData.name,
+          image: requesterData.avatar,
+          nick: "@" + requesterData.nick,
+          requestDate: `${day}-${month}-${year}`,
+        };
+      });
+      setRequesters(transformedData);
+      setIsLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setIsLoading(false);
+      console.log(err.message);
+    }
+
+    setIsLoading(false);
+  }, []);
+
+  console.log(requesters);
+
+  useEffect(() => {
+    fetchNewRequesters();
+  }, [fetchNewRequesters]);
+
   return (
     <MetricCard>
       {/*<div className={classes.requests}>*/}
@@ -73,15 +128,24 @@ const NewRequests = () => {
       {/*Requesters on hold*/}
       <div className={classes.requests_list}>
         <ul className={classes.requests_ulist}>
-          {newRequestersData.map((request) => (
-            <NewRequestItem
-              key={request.id}
-              image={request.image}
-              name={request.name}
-              nick={request.nick}
-              requestDate={request.requestDate}
-            />
-          ))}
+          {/*{newRequestersData.map((request) => (*/}
+          {isLoading && <strong>LOADING...</strong>}
+          {!isLoading && error && (
+            <p>
+              <br />
+              <strong>{error}</strong>
+            </p>
+          )}
+          {!isLoading &&
+            requesters.map((request) => (
+              <NewRequestItem
+                key={request.id}
+                image={request.image}
+                name={request.name}
+                nick={request.nick}
+                requestDate={request.requestDate}
+              />
+            ))}
         </ul>
       </div>
       {/*</div>*/}
