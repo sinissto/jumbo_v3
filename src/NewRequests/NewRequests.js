@@ -61,31 +61,46 @@ const NewRequests = () => {
 
   const [requesters, setRequesters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const newRequestersURL =
-    "https://629e69668b939d3dc281706e.mockapi.io/requesters";
+    "https://629e69668b939d3dc281706e.mockapi.io/requester";
 
   const fetchNewRequesters = useCallback(async () => {
     setIsLoading(true);
-    const response = await fetch(newRequestersURL);
-    const data = await response.json();
-    const transformedData = data.map((requesterData) => {
-      // Date formating
-      const dateOfRequest = new Date(requesterData.createdAt);
-      const year = dateOfRequest.getFullYear();
-      const month = dateOfRequest.getMonth();
-      const day = dateOfRequest.getDay();
+    setError(null);
 
-      return {
-        id: requesterData.id,
-        name: requesterData.name,
-        image: requesterData.avatar,
-        nick: "@" + requesterData.nick,
-        requestDate: `${day}-${month}-${year}`,
-      };
-    });
-    setRequesters(transformedData);
-    setIsLoading(false);
+    try {
+      const response = await fetch(newRequestersURL);
+
+      if (response.ok === false) {
+        throw new Error("Nesto si sjebao!!!");
+      }
+      console.log(response);
+      const data = await response.json();
+
+      const transformedData = data.map((requesterData) => {
+        // Date formating
+        const dateOfRequest = new Date(requesterData.createdAt);
+        const year = dateOfRequest.getFullYear();
+        const month = dateOfRequest.getMonth();
+        const day = dateOfRequest.getDay();
+
+        return {
+          id: requesterData.id,
+          name: requesterData.name,
+          image: requesterData.avatar,
+          nick: "@" + requesterData.nick,
+          requestDate: `${day}-${month}-${year}`,
+        };
+      });
+      setRequesters(transformedData);
+      setIsLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setIsLoading(false);
+      console.log(err.message);
+    }
   }, []);
 
   console.log(requesters);
@@ -113,6 +128,12 @@ const NewRequests = () => {
         <ul className={classes.requests_ulist}>
           {/*{newRequestersData.map((request) => (*/}
           {isLoading && <strong>LOADING...</strong>}
+          {!isLoading && error && (
+            <p>
+              <br />
+              <strong>{error}</strong>
+            </p>
+          )}
           {!isLoading &&
             requesters.map((request) => (
               <NewRequestItem
