@@ -9,6 +9,7 @@ import Visited from "./Visited/Visited";
 import Profile from "./Profile/Profile";
 import ProfileContainer from "./Layout/ProfileContainer";
 import NewRequests from "./NewRequests/NewRequests";
+import { NewRequestsContextProvider } from "./context/newRequests-context";
 
 const APP_DATA = {
   views: {
@@ -88,7 +89,9 @@ function App() {
 
       <ProfileContainer>
         <Profile />
-        <NewRequests />
+        <NewRequestsContextProvider>
+          <NewRequests />
+        </NewRequestsContextProvider>
       </ProfileContainer>
     </Fragment>
   );
