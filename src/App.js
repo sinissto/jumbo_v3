@@ -10,6 +10,10 @@ import Profile from "./Profile/Profile";
 import ProfileContainer from "./Layout/ProfileContainer";
 import NewRequests from "./NewRequests/NewRequests";
 import { NewRequestsContextProvider } from "./context/newRequests-context";
+import APIContainer from "./Layout/APIContainer";
+
+import MoviesList from "./Movies/MoviesList";
+import MovieDescription from "./Movies/MovieDescription";
 
 const APP_DATA = {
   views: {
@@ -93,6 +97,11 @@ function App() {
           <NewRequests />
         </NewRequestsContextProvider>
       </ProfileContainer>
+
+      <APIContainer>
+        <MoviesList />
+        <MovieDescription />
+      </APIContainer>
     </Fragment>
   );
 }
