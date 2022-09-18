@@ -60,7 +60,7 @@ import NewRequestsContext from "../context/newRequests-context";
 const NewRequests = () => {
   // console.log(newRequestersData)
   const ctx = useContext(NewRequestsContext);
-  console.log(ctx);
+  // console.log(ctx);
 
   return (
     <MetricCard>

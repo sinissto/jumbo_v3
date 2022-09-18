@@ -1,0 +1,18 @@
+.movie_item {
+  background-color: #001fb2;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 50%;
+
+  border-radius: 1rem;
+}
+
+.movie_item:last-child {
+  margin-bottom: 0;
+}
+
+.movie_item p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #eaea45;
+}

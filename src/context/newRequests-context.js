@@ -47,13 +47,13 @@ export const NewRequestsContextProvider = (props) => {
     } catch (err) {
       setError(err.message);
       setIsLoading(false);
-      console.log(err.message);
+      // console.log(err.message);
     }
 
     setIsLoading(false);
   }, []);
 
-  console.log(requesters);
+  // console.log(requesters);
 
   useEffect(() => {
     fetchNewRequesters();
